@@ -1,0 +1,154 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.sidebar {
+  width: 20%;
+  min-width: 150px;
+}
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f2f5; 
+}
+
+.header {
+  height: 60px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.toggle, .close {
+  display: none;
+  top: 10px;
+  padding: 10px;
+  z-index: 20;
+  cursor: pointer;
+
+}
+
+.close {
+  right: 10px;
+  background-color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #f0f2f5 !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+
+  .sidebar {
+    display: flex;
+    z-index: 2;
+    height: 0;
+    width: 100%;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: absolute;
+  }
+  .toggle {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 10px;
+    background-color: #ffffff;
+    font-size: 20px;
+    border-radius: 10px;
+    
+    &:hover {
+      background-color: #f0f2f5;
+    }
+  }
+
+  .open .sidebar {
+    opacity: 1;
+    max-width: 100%;
+    height: auto;
+
+    .close {
+      display: block;
+      background-color: #2a3f54;
+    }
+  }
+
+  .open .toggle {
+    display: none;
+  }
+
+
+  .header {
+    height: 50px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .open .sidebar {
+    padding-top: 60px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #2a3f54;
+  }
+
+  .header {
+    height: 40px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .close {
+    display: none !important;
+  }
+
+  .toggle {
+    width: 100%;
+    display: block !important;
+    left: 0;
+  }
+
+  .open .toggle {
+      background-color: #2a3f54;
+  }
+}
